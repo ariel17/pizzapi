@@ -1,0 +1,5 @@
+# IDE Meta #
+.*.swp
+
+# Compilation artifacts #
+*.py{c,o}
