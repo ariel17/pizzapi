@@ -16,7 +16,7 @@ class Ingredient(models.Model):
     The pizza ingredients to apply.
     """
 
-    name = models.CharField(_(u'Name'))
+    name = models.CharField(_(u'Name'), max_length=50)
 
     def __unicode__(self):
         """
@@ -30,7 +30,7 @@ class Pizza(models.Model):
     A pizza model about those to be delivered.
     """
 
-    name = models.CharField(_(u'Name'))
+    name = models.CharField(_(u'Name'), max_length=50)
     ingredients = models.ManyToMany(Ingredient)
 
     def __unicode__(self):
