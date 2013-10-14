@@ -7,6 +7,7 @@ Description: Client information; by now, just that.
 __author__ = "Ariel Gerardo Rios (ariel.gerardo.rios@gmail.com)"
 
 
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext as _
 
@@ -17,4 +18,4 @@ from pizza.models import Pizza
 class Client(Address):
     """
     """
-    pass
+    user = models.OneToOneField(User)
