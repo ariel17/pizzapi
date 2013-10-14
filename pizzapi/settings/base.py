@@ -129,7 +129,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    # third party
     'rest_framework',
+    # project apps
+    'pizzapi',
+    'pizza',
+    'shop',
+    'client',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
