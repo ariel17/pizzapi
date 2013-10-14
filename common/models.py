@@ -17,13 +17,16 @@ class Address(models.Model):
     Model containing the all related information about address location.
     """
 
+    class Meta:
+        abstract = True
+
     TYPES_CHOICES = (
         (u'HOME', _(u'Home')),
         (u'WORK', _(u'Work')),
-        (u'OTHER', _(u'Other'))
+        (u'OTHER', _(u'Other')),
     )
 
-    type = models.CharField(_(u'Type'), maxlength=20, choices=TYPES_CHOICES)
+    type = models.CharField(_(u'Type'), max_length=20, choices=TYPES_CHOICES)
     street_line1 = models.CharField(_(u'Address 1'), max_length=100,
                                     blank=True)
     street_line2 = models.CharField(_(u'Address 2'), max_length=100,
