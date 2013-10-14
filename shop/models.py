@@ -45,10 +45,10 @@ class OrderState(models.Model):
     CANCELLED = 'ca'
 
     STATE_CHOICES = (
-        PENDING, _('Pending'),
-        COOKING, _('Cooking'),
-        DELIVERED, _('Delivered'),
-        CANCELLED, _('Cancelled'),
+        (PENDING, _('Pending')),
+        (COOKING, _('Cooking')),
+        (DELIVERED, _('Delivered')),
+        (CANCELLED, _('Cancelled')),
     )
 
     order = models.ForeignKey('Order')
@@ -63,7 +63,7 @@ class Delivery(models.Model):
 
     order = models.ForeignKey('Order')
     shop = models.ForeignKey('Shop')
-    charge = models.DecimalField()
+    charge = models.DecimalField(max_digits=3, decimal_places=2)
 
 
 class DeliveryState(models.Model):
