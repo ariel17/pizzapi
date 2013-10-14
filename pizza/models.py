@@ -31,7 +31,7 @@ class Pizza(models.Model):
     """
 
     name = models.CharField(_(u'Name'), max_length=50)
-    ingredients = models.ManyToMany(Ingredient)
+    ingredients = models.ManyToManyField(Ingredient)
 
     def __unicode__(self):
         """
