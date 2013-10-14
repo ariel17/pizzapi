@@ -2,4 +2,4 @@
 .*.swp
 
 # Compilation artifacts #
-*.py{c,o}
+*.py[c,o]
