@@ -12,6 +12,17 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 
+HOME = 'ho'
+WORK = 'wo'
+OTHER = 'ot'
+
+TYPES_CHOICES = (
+    (HOME, _(u'Home')),
+    (WORK, _(u'Work')),
+    (OTHER, _(u'Other')),
+)
+
+
 class Address(models.Model):
     """
     Model containing the all related information about address location.
@@ -19,12 +30,6 @@ class Address(models.Model):
 
     class Meta:
         abstract = True
-
-    TYPES_CHOICES = (
-        (u'HOME', _(u'Home')),
-        (u'WORK', _(u'Work')),
-        (u'OTHER', _(u'Other')),
-    )
 
     type = models.CharField(_(u'Type'), max_length=20, choices=TYPES_CHOICES)
     street_line1 = models.CharField(_(u'Address 1'), max_length=100,
@@ -42,3 +47,15 @@ class Address(models.Model):
     state = models.CharField(_(u'State'), max_length=100, blank=True)
     postal_box = models.CharField(_('Postal box'), max_length=20, blank=True)
     country = models.CharField(_('Country'), max_length=100, blank=True)
+
+
+class Phone(models.Model):
+    """
+    TODO
+    """
+
+    class Meta:
+        abstract = True
+
+    type = models.CharField(_(u'Type'), max_length=20, choices=TYPES_CHOICES)
+    number = models.CharField(_(u'Number'), max_length=50)

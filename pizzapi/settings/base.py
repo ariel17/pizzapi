@@ -136,6 +136,7 @@ INSTALLED_APPS = (
     'pizza',
     'shop',
     'client',
+    'order',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-Description: Pizza, providers and orders models.
+Description: Pizza models! About how it is composed when talking about
+ingredients.
 """
 __author__ = "Ariel Gerardo Rios (ariel.gerardo.rios@gmail.com)"
 

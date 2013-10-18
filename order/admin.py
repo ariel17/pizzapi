@@ -9,16 +9,16 @@ __author__ = "Ariel Gerardo Rios (ariel.gerardo.rios@gmail.com)"
 
 from django.contrib import admin
 
-from pizza.models import Ingredient, Pizza
+from order.models import Order, OrderState
 
 
-class IngredientAdmin(admin.ModelAdmin):
+class OrderAdmin(admin.ModelAdmin):
     pass
 
 
-class PizzaAdmin(admin.ModelAdmin):
+class OrderStateAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Ingredient, IngredientAdmin)
-admin.site.register(Pizza, PizzaAdmin)
+admin.site.register(Order, OrderAdmin)
+admin.site.register(OrderState, OrderStateAdmin)

@@ -11,8 +11,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext as _
 
-from common.models import Address
-from pizza.models import Pizza
+from common.models import Address, Phone
 
 
 class Shop(Address):
@@ -21,39 +20,32 @@ class Shop(Address):
     """
 
     user = models.OneToOneField(User)
-    pizzas = models.ManyToManyField(Pizza)
+    address = models.ManyToManyField('ShopAddress')
+    phone = models.ManyToManyField('ShopPhone')
 
 
-class Order(models.Model):
+class ShopAddress(Address):
     """
-    What the client wants as a pizza.
+    The shop address model.
+    """
+    pass
+
+
+class ShopPhone(Phone):
+    """
+    TODO
+    """
+    pass
+
+
+class Promotion(models.Model):
+    """
+    A shop promotion for pizzas or combos.
     """
 
-    client = models.ForeignKey('client.Client')
-    pizzas = models.ManyToManyField('pizza.Pizza')
-    shop = models.ForeignKey('Shop', null=True)
-
-
-class OrderState(models.Model):
-    """
-    The order state.
-    """
-
-    PENDING = 'pe'
-    COOKING = 'co'
-    DELIVERED = 'de'
-    CANCELLED = 'ca'
-
-    STATE_CHOICES = (
-        (PENDING, _('Pending')),
-        (COOKING, _('Cooking')),
-        (DELIVERED, _('Delivered')),
-        (CANCELLED, _('Cancelled')),
-    )
-
-    order = models.ForeignKey('Order')
-    state = models.CharField(max_length=2, choices=STATE_CHOICES,
-                             default=PENDING)
+    shop = models.ForeignKey('Shop')
+    pizza = models.ForeignKey('pizza.Pizza')
+    charge = models.DecimalField(max_digits=3, decimal_places=2)
 
 
 class Delivery(models.Model):
@@ -61,9 +53,8 @@ class Delivery(models.Model):
     What the client wants as a pizza, how much it costs.
     """
 
-    order = models.ForeignKey('Order')
+    order = models.ForeignKey('order.Order')
     shop = models.ForeignKey('Shop')
-    charge = models.DecimalField(max_digits=3, decimal_places=2)
 
 
 class DeliveryState(models.Model):
