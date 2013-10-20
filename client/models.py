@@ -19,18 +19,19 @@ class Client(models.Model):
     The client identification model.
     """
     user = models.OneToOneField(User)
-    address = models.ManyToManyField('ClientAddress')
-    phone = models.ManyToManyField('ClientPhone')
+    address = models.ManyToManyField('ClientAddress', related_name='+')
+    phone = models.ManyToManyField('ClientPhone', related_name='+')
 
 
 class ClientAddress(Address):
     """
     The client address model.
     """
-    pass
+    client = models.ForeignKey('Client')
+
 
 class ClientPhone(Phone):
     """
     TODO
     """
-    pass
+    client = models.ForeignKey('Client')
