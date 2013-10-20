@@ -51,7 +51,7 @@ class Address(models.Model):
 
 class Phone(models.Model):
     """
-    TODO
+    An abstract phone model.
     """
 
     class Meta:
